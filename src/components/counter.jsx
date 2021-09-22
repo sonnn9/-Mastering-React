@@ -3,20 +3,14 @@ import React, { Component } from "react";
 class Counter extends  Component {
     state = {
         count: 0,
-        tags: ["tag1","tag2","tag3"]
     };
 
-    // constructor() {
-    //     super();
-    //     this.handleIncrement = this.handleIncrement.bind(this);
-    // }
-    
     handleIncrement = () => {
-        console.log('Increment Clicked', this);
+        this.state.count++;
+        this.setState({ count: this.state.count + 1 });
     }
 
     render() {
-
         return (
             <div>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
