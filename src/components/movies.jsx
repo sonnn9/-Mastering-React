@@ -19,7 +19,7 @@ class Movies extends Component {
                 <p>
                     Currently Showing {this.state.movies.length} Movies in the Database
                 </p>
-                <table class="table">
+                <table className="table">
                     <thead>
                     <tr>
                         <th>Title</th>
