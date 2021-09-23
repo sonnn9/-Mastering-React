@@ -11,8 +11,9 @@ class Counters extends  Component {
         ]
     };
 
-    handleDelete = () => {
-        console.log("event Handler called")
+    handleDelete = counterId => {
+        const counters = this.state.counters.filter(c => c.id !== counterId);
+        this.setState({counters: counters})
     }
     render() {
         return (
@@ -20,9 +21,8 @@ class Counters extends  Component {
             {this.state.counters.map(counter =>
                 <Counter
                     key={counter.id}
-                    value={counter.value}
-                    id={counter.id}
                     onDelete={this.handleDelete}
+                    counter={counter}
                 />
             )}
         </div>
