@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 
 // Stateless Functional Component
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <nav className="navbar navbar-light bg-light">
             <a className="navbar-brand" href="#">
-                Navbar <span className="badge badge-pill badge-secondary">{this.props.totalCounters}</span>
+                Navbar{" "}
+                Navbar <span className="badge badge-pill badge-secondary">
+                {props.totalCounters}
+            </span>
             </a>
         </nav>
     );
 }
 
 
-export default Navbar;
+export default NavBar;
