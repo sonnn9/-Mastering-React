@@ -9,7 +9,7 @@ class Counters extends  Component {
         const  {onReset, counters, onDelete, onIncrement } = this.props;
         return (
         <div>
-            <button className="btn btn-primary" onClick={this.props.onReset}>Reset</button>
+            <button className="btn btn-primary" onClick={onReset}>Reset</button>
 
             {counters.map(counter =>
                 <Counter
