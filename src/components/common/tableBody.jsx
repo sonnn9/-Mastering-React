@@ -7,15 +7,17 @@ class TableBody extends Component {
         return _.get(item, column.path);
     }
 
+    createKey = (item, column) => {
+        return item._id + (column.path || column.key);
+    }
+
     render() {
         const {data, columns}  = this.props;
         return (<tbody>
             {data.map(item => <tr>
-                {columns.map(column => <td>{_.get(item, column.path)}</td>)}
-                <td></td>
+                {columns.map(column => <td key={item._id + (column.path || column.key)}>{_.get(item, column.path)}</td>)}
             </tr>)}
             </tbody>
-
         );
     }
 }
