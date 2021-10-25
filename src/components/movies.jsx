@@ -9,11 +9,11 @@ import _ from 'lodash';
 
 class Movies extends Component {
     state = {
-        movies: getMovies(),
-        genres: getGenres(),
+        movies: [],
+        genres: [],
         currentPage : 1,
         pageSize: 4,
-        sortColumn: {path: 'title', order: 'asc'}
+        sortColumn: {path: "title", order: "asc"}
     };
 
     componentDidMount() {
@@ -51,14 +51,20 @@ class Movies extends Component {
         const {
             pageSize,
             currentPage,
-            sortColumn,
             selectedGenre,
-            movies: allMovies
+            movies: allMovies,
+            sortColumn
         } = this.state;
 
-        const filtered = selectedGenre && selectedGenre._id ? allMovies.filter(m=> m.genre._id === selectedGenre._id) : allMovies;
+        const filtered =
+            selectedGenre && selectedGenre._id
+                ? allMovies.filter(m=> m.genre._id === selectedGenre._id)
+                : allMovies;
 
-        const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
+        const sorted = _.orderBy(
+            filtered,
+            [sortColumn.path],
+            [sortColumn.order]);
 
         const movies = paginate(sorted, currentPage, pageSize);
 
@@ -71,6 +77,7 @@ class Movies extends Component {
             pageSize,
             currentPage,
             sortColumn,
+            genres
         } = this.state;
 
         if (this.state.movies.length === 0) return <p>Current there is no movies</p>;
@@ -81,7 +88,7 @@ class Movies extends Component {
                 <div className="row">
                     <div className="col-3">
                         <ListGroup
-                            items={this.state.genres}
+                            items={genres}
                             selectedItem={this.state.selectedGenre}
                             onItemSelect={this.handleGenreSelect}
                         />
